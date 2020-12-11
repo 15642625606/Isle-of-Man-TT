@@ -1,21 +1,19 @@
 #编程实现对一个元素全为数字的列表，求最大值、最小值
 
-#方法1
-a = [1,2,3,4,5,6,7,11,10,9,]
-i = 1
-b = a[0]
+import random
+list = []
+n = int(input("请输入你想要的数字个数，我们将为您随机生成0-100的数字："))
+while n > 0:
+    list.append(random.randint(0,100))
+    n -= 1
+print(list)
 
-while i <= len(a):
-    for k in a:
-        if b >= k:
-            pass
-        else:
-            b = k
-    i +=1
-print(b)
+max = list[0]
+min = list[0]
+for value in list:
+    if value > max:
+        max = value
+    if value <min:
+        min = value
 
-#方法2
-res = max(a)
-print(res)
-res = min(a)
-print(res)
+print("最大值：%d\n最小值：%d"%(max,min))
