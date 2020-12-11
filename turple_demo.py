@@ -16,5 +16,29 @@ for zodiac_day in zodiac_days:
         index = 0
     elif (month,day) > zodiac_day:
         index += 1
-
 print(zodiac[index])
+
+
+
+
+def sx(year):
+    y = (year-1972)%12 #对12取余
+    return shx[y] #从字典shx里依次取对应的生肖，如：1972即余数0，取“鼠”
+
+def xz(month,date):
+    d = (20,19,21,20,21,22,23,23,23,24,23,22) #按日期顺序把每个月的分隔星座的日期列出来，从水瓶座（1月）开始
+    c = ("摩羯座","水瓶座","双鱼座","白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座")
+    # 有了列表d的分隔日期，对应在此分隔日期之前的星座写入列表c,如：第一个水瓶座的20号之前是摩羯座
+    if date & amp;lt; d[month-1]: #如果是1.19号，即取d中1月份的20
+        return c[month-1] #日期在20号之前，即取对应到c的摩羯座
+    else:
+        return c[month] #否则就是20号之后，下一个水瓶座
+shx = {0:"鼠",1:"牛",2:"虎",3:"兔",4:"龙",5:"蛇",6:"马",7:"羊",8:"猴",9:"鸡",10:"狗",11:"猪"}
+sr = raw_input("请输入您的生日(格式：1999.09.09)：")
+t = sr.split(".") #切片，把sr以“.”分割，变成3个字符串
+year = int(t[0])
+month = int(t[1])
+date = int(t[2])
+
+print "您的生肖是："+sx(year)
+print "您的星座是："+xz(month,date)
